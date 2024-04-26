@@ -2,6 +2,8 @@
 
 import '@/assets/styles/globals.css'
 
+import Navbar from '@/components/Navbar';
+
 export const metadata = {
   title:'Property pulse',
   description:'Find your dream property here',
@@ -13,7 +15,7 @@ const MainLayout = ({ children }) => {
     <html>
         <body>
       <header>
-        {/* Header content */}
+        <Navbar />
       </header>
       <main>
         {children}

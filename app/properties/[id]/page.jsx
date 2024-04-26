@@ -8,7 +8,7 @@ const IdPage = () => {
   return (
     <div>
       <h1>IdPage</h1>
-      <button onClick={()=> router.push('/properties')} className='bg-blue-500' >Navigation hooks {id}, {query.get('age')} </button>
+      <button onClick={()=> router.push('/properties')} className='bg-blue-500' >Navigation hooks {id}, {query.get('name')} </button>
     </div>
   )
 }
