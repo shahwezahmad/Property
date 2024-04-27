@@ -1,15 +1,15 @@
 // page.tsx
 import Link from "next/link";
-
+import Hero from "@/components/Hero";
+import InfoBoxes from "@/components/InfoBoxes";
 
 const HomePage = () => {
   return (
-    <div>
-      <h1>This is the Page Component</h1>
-      <p>Page content goes here...</p>
-      <Link href="/properties">p</Link>
-
-    </div>
+    <>
+    <Hero />
+    <InfoBoxes />
+    
+    </>
   );
 };
 

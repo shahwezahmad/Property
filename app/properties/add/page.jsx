@@ -1,7 +1,7 @@
 
 const AddProperty = () => {
     return (
-        <div>Add Property</div>
+       <>Add Property</>
     )
 }
 
