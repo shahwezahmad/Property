@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const PropertyAddForm = () => {
   const [fields, setFields] = useState({
-    type: "Apartment",
+    type: "",
     name: "Test Property",
     description: "",
     location: {
@@ -25,11 +25,46 @@ const PropertyAddForm = () => {
       email: "",
       phone: "",
     },
+    images: [],
   });
 
-  const handleChange = () => {};
-  const handleAmenitiesChange = () => {};
-  const handleImageChange = () => {};
+  const handleChange = (e) => {
+    const { value, name } = e.target;
+    if (name.includes(".")) {
+      const [outerKey, innerKey] = name.split(".");
+      console.log(innerKey);
+      console.log(outerKey);
+      setFields((prev) => ({
+        ...prev,
+        [outerKey]: { ...prev[outerKey], [innerKey]: value },
+      }));
+    } else {
+      setFields((prev) => ({ ...prev, name: value }));
+    }
+  };
+  const handleAmenitiesChange = (e) => {
+    const { value, checked } = e.target;
+    const updatedAmenites = [...fields.amenities];
+    if (checked) {
+      updatedAmenites.push(value);
+    } else {
+      const index = updatedAmenites.indexOf(value);
+      if (index !== -1) {
+        updatedAmenites.slice(index, 1);
+      }
+    }
+    setFields((prev) => ({ ...prev, amenities: updatedAmenites }));
+  };
+  const handleImageChange = (e) => {
+    const { files } = e.target;
+    const updateImages = [...fields.images];
+
+    for (let file of files) {
+      updateImages.push(file);
+    }
+
+    setFields((prev) => ({ ...prev, images: updateImages }));
+  };
   return (
     <form>
       <h2 className="text-3xl text-center font-semibold mb-6">Add Property</h2>
