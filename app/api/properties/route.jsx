@@ -12,8 +12,13 @@ export const GET = async (request) => {
   }
 };
 
-export const POST = (request) => {
+export const POST = async (request) => {
   try {
+    const formData = await request.formData();
+    const amenities = formData.getAll("amenities");
+    const images = formData
+      .getAll("images")
+      .filter((item) => item.name !== null);
     return new Response({ message: "Success" }, { status: 200 });
   } catch (error) {
     return new Response("Failed", { status: 500 });
